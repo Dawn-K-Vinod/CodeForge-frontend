@@ -353,11 +353,6 @@ int main() {
             matchBrackets: true,
         });
 
-        const response = await fetch('https://codeforge-backend-9fjd.onrender.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ code: cCode }),
-        });
 
         // Show Pop-up on Page Load
         window.onload = function () {
@@ -404,7 +399,7 @@ int main() {
 
             try {
                 // Send the C code to the backend for compilation
-                const response = await fetch('http://localhost:3000/compile', {
+                const response = await fetch('https://codeforge-backend-9fjd.onrender.com', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ code: cCode }),

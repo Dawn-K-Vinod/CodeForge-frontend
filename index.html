@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeForge Converter</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- CodeMirror for Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/theme/dracula.min.css">
+    
+</head>
+<body>
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <!-- Pop-up Window -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <h2>Welcome to CodeForge Converter!</h2>
+        <p>This webpage allows you to convert C code to assembly, as well as convert English words or numbers to binary.</p>
+        <p>Created by <strong>Johns Jose & Dawn</strong> | B.Tech CSE - A</p>
+        <button onclick="closePopup()">Get Started</button>
+    </div>
+
+    <!-- Floating Header Image -->
+    <div class="header-image">
+        <img src="binary.jpg" alt="Binary Image">
+    </div>
+
+    <h1>CodeForge Converter</h1>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#c-to-asm" onclick="showSection('c-to-asm')">C to Assembly</a>
+        <a href="#text-to-binary" onclick="showSection('text-to-binary')">Text to Binary</a>
+    </div>
+
+    <!-- Section 1: C Code to Assembly and Binary -->
+    <div id="c-to-asm" class="section active">
+        <h2>C Code to Assembly</h2>
+        <p>Enter a simple C program to see its assembly representation.</p>
+        <textarea id="c_code" rows="10" placeholder="Enter C code here...">
+#include <stdio.h>
+
+int main() {
+    int x = 10;
+    int y = x + 1;
+    return y;
+}
+        </textarea>
+        <br>
+        <button onclick="convertCode()">Convert C Code</button>
+        <button onclick="loadRandomProgram()">Load Random C Program</button>
+
+        <div class="output">
+            <h3>Assembly Code</h3>
+            <pre id="assembly_output">Assembly code will appear here...</pre>
+            <button onclick="downloadOutput('assembly_output', 'assembly.s')">Download Assembly</button>
+        </div>
+    </div>
+
+    <!-- Section 2: English Words/Numbers to Binary -->
+    <div id="text-to-binary" class="section">
+        <h2>English Words/Numbers to Binary</h2>
+        <p>Enter an English word or number to see its binary representation.</p>
+        <input type="text" id="text_input" placeholder="Enter text or number here...">
+        <br>
+        <button onclick="convertText()">Convert Text</button>
+
+        <div class="output">
+            <h3>Binary Output</h3>
+            <pre id="text_binary_output">Binary output will appear here...</pre>
+            <button onclick="downloadOutput('text_binary_output', 'text_binary.txt')">Download Binary</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Created by <strong>Johns Jose & Dawn</strong> | B.Tech CSE - A
+    </footer>
+
+    <!-- CodeMirror Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/mode/clike/clike.min.js"></script>
+</body>
+</html>

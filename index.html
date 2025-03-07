@@ -521,7 +521,7 @@ int main() {
 
             try {
                 // Send the C code to the backend for compilation
-                const response = await fetch('http://localhost:8080/', {
+                const response = await fetch('https://dynamic-education.up.railway.app', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ code: cCode }),

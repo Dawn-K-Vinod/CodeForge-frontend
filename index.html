@@ -340,6 +340,25 @@
             .section { margin: 1rem; padding: 1rem; }
             .navbar { flex-direction: column; gap: 1rem; }
         }
+
+        /* Style for the copy button */
+        button.copy-button {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            margin: 0.5rem;
+        }
+
+        button.copy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -410,6 +429,9 @@ int main() {
             <pre id="assembly_output">Assembly code will appear here...</pre>
             <button onclick="downloadOutput('assembly_output', 'assembly.s')">
                 <i class="fas fa-download"></i> Download Assembly
+            </button>
+            <button onclick="copyOutput('assembly_output')">
+                <i class="fas fa-copy"></i> Copy
             </button>
         </div>
     </div>
@@ -564,6 +586,24 @@ int main() {
                 document.getElementById("text_binary_output").textContent = binaryOutput.trim();
             }
         }
+
+        // Function to copy output to clipboard
+        function copyOutput(elementId) {
+            // Get the text content from the specified element
+            const outputText = document.getElementById(elementId).textContent;
+
+            // Use the Clipboard API to copy the text
+            navigator.clipboard.writeText(outputText)
+                .then(() => {
+                    // Show a success message or visual feedback
+                    alert('Copied to clipboard!');
+                })
+                .catch((error) => {
+                    // Handle errors (e.g., if the Clipboard API is not supported)
+                    console.error('Failed to copy:', error);
+                    alert('Failed to copy. Please try again.');
+                });
+}
 
         // Function to download output
         function downloadOutput(elementId, fileName) {
